@@ -25,7 +25,6 @@ def get_request(schedulerObject):
     file.close()
 
     print(f"Get request performed at {datetime.datetime.now().isoformat()}")
-    print(requestDataJsonString)
     if not schedulerObject.empty():
         show_queue(schedulerObject)
     else:
@@ -33,7 +32,7 @@ def get_request(schedulerObject):
 
 
 def show_queue(schedulerObject):
-    print("CurrentQueue:")
+    print("Queue:")
     for event in schedulerObject.queue:
         print(datetime.datetime.fromtimestamp(event.time).isoformat())
 
@@ -52,6 +51,7 @@ def app():
     else:
         inputTimeList = inputString.split(',')
 
+    print(inputTimeList)
     scheduler = sched.scheduler(time.time, time.sleep)
 
     for timeString in inputTimeList:
@@ -59,6 +59,7 @@ def app():
         try:
             timeComponent = datetime.time.fromisoformat(timeString)
         except:
+            print("wow")
             continue
 
         dt = datetime.datetime.combine(datetime.date.today(), timeComponent)
