@@ -41,7 +41,7 @@ def app():
     print("")
     inputString = input('Plese enter times in quotation marks separated by commas.\nExample: 09:15:25,11:58:23,00:01:09\nTimes in the past will not be run, and invalid inputs are ignored (ie 06:00:00 will not be run if the current time is 07:00:00)\nalternatively type "file" to select a file with the times formatted in the same way\n')
     if inputString == "file":
-        fileName = input("Input the file name including extension. Example: Input.txt\n")
+        fileName = input("Input the file name including extension. Example: Input.txt\nFile must be in same folder as executable.\n")
         try:
             file = open(fileName, "r")
             inputTimeList = file.read().split(',')
